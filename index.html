@@ -13,10 +13,14 @@
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <title>Amazon 2.0</title>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="firebase.js"></script>
+    <script src="script.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+
 </head>
 <body>
     <div class="bg-white w-full">
@@ -166,12 +170,12 @@
 
                     </div>
                     
-
                 </div>
                 <div class="main-section-hotdeals">
                     <h1 class="text-2xl font-bold text-gray-700 mt-5"> Hot deals 🔥</h1>
                     <div class="main-section-products flex mt-5">
-                        <div class="main-product">
+                        <!--All this replaced by fetching info from the database-->
+                        <!-- <div class="main-product">
                             <div class="product-image h-52 w-48 bg-white rounded-lg p-4">
                                 <img class="w-full h-full object-contain" src="https://scartek.co.ke/wp-content/uploads/2021/05/22.jpeg"/>
                             </div>
@@ -183,9 +187,12 @@
                             </div>
                             <div class="product-rating text-yellow-300 font-bold my-1">
                                 ⭐⭐⭐⭐⭐ 4.5
-                            </div>
+                            </div> 
                             <div class="product-price font-bold text-gray-700 text-lg">
                                 $290.00
+                            </div>
+                            <div class="add-to-cart h-8 w-28 bg-yellow-500 flex items-center justify-center text-white rounded text-md cursor-pointer hover:bg-yellow-600">
+                                add to cart
                             </div>
                         </div>
                         
@@ -197,13 +204,16 @@
                                 Macbook Pro (2020 )
                             </div>
                             <div class="product-make text-green-700 font-bold mt-2">
-                                Macbook 
+                                Apple 
                             </div>
                             <div class="product-rating text-yellow-300 font-bold my-1">
                                 ⭐⭐⭐⭐⭐ 4.5
                             </div>
                             <div class="product-price font-bold text-gray-700 text-lg">
                                 $1120.00
+                            </div>
+                            <div class="add-to-cart">
+                                add to cart
                             </div>
                         </div>
                         
@@ -223,7 +233,10 @@
                             <div class="product-price font-bold text-gray-700 text-lg">
                                 $600.00
                             </div>
-                        </div>
+                            <div class="add-to-cart">
+                                add to cart
+                            </div>
+                        </div> -->
                     
 
                     </div>
