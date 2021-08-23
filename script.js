@@ -14,8 +14,27 @@ function getItems(){
             // console.log(Items)
         });
         function addToCart (item){
-            console.log("add to cart clicked")
-            console.log(item)
+            // console.log(item)
+            let cartItem= db.collection("cart-items").doc(item.id);
+            cartItem.get()
+            .then(function(doc){
+                if(doc.exists){
+                    cartItem.update({
+                        quantity:doc.data().quantity +1
+                    })
+                } else{
+                    cartItem.set({
+                        image:item.image,
+                        name:item.name,
+                        make:item.make,
+                        rating:item.rating,
+                        price:item.price,
+                        quantity:2
+                    })
+                }
+                // console.log(doc.data().quantity)
+            })
+            
         }
         function generateItems (Items){
             // let ItemsHTML =""; 
