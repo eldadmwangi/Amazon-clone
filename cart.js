@@ -15,9 +15,21 @@
 
             })
         }) 
-         console.log(cartItems)
+        //  console.log(cartItems)
         generateCartItems(cartItems)
+        getTotalCost(cartItems)
      })
+ }
+
+ function getTotalCost (items) {
+     let totalCost =0;  
+     items.forEach((item)=>{
+         totalCost += (item.price * item.quantity);
+         document.querySelector(".total-cost-number").innerText = `
+         $ ${totalCost}
+         `
+     })
+
  }
 
  function decreaseCount(itemid) {
@@ -87,7 +99,6 @@
                         
                     </div>
 
-                    
         `
      })
      //crazy . in class had me here all night//
