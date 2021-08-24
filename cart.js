@@ -1,7 +1,7 @@
  function getCartItems (){
      db.collection("cart-items").onSnapshot((Snapshot)=>{
         let cartItems=[];
-        Snapshot.forEach((doc)=>{
+        Snapshot.docs.forEach((doc)=>{
             cartItems.push({
                 id:doc.id,
               //USE THE SPREAD OPERATOR//
@@ -15,14 +15,42 @@
 
             })
         }) 
-        // console.log(cartItems, 'this is what the carrt items are')
+         console.log(cartItems)
         generateCartItems(cartItems)
-
      })
  }
+
+ function decreaseCount(itemid) {
+     let cartItem = db.collection ("cart-items").doc(itemid);
+     cartItem.get().then(function(doc){
+         if (doc.exists) {
+           if (doc.data().quantity >1 ){
+               cartItem.update({
+                   quantity:doc.data().quantity -1
+               })
+           }  
+         }
+     })
+
+ }
+
+ function increaseCout(itemid) {
+     let cartItem = db.collection("cart-items").doc(itemid);
+     cartItem.get().then(function(doc){
+         if (doc.exists) {
+             if (doc.data().quantity > 0){
+                 cartItem.update({
+                     quantity:doc.data().quantity +1
+                 })
+             }
+         }
+     })
+ }
+
  function generateCartItems (cartItems) {
      let itemsHTML ="";
       cartItems.forEach((item)=>{
+        //   console.log(item.price)
          itemsHTML += `
         <div class="cart-item flex items-center pb-4 border-b border-gray-300">
                         <div class="cart-item-image w-40 h-24 bg-white-300 p-4 rounded-lg">
@@ -37,26 +65,45 @@
                             </div>
                         </div>
                         <div class="cart-item-counter w-48 flex items-center">
-                            <div class="chevron-left cursor-pointer text-gray-400 bg-gray-100 rounded h-6 w-6 flex items-center justify-center hover:bg-gray-200 mr-2">
+                            <div data-id=${item.id} class="cart-item-decrease cursor-pointer text-gray-400 bg-gray-100 rounded h-6 w-6 flex items-center justify-center hover:bg-gray-200 mr-2">
                                 <i class="fas fa-chevron-left"></i>
                             </div>
                             <h4 class="text-gray-400"> x ${item.quantity} </h4>
-                            <div class="chevron-right cursor-pointer text-gray-400 bg-gray-100 rounded h-6 w-6 flex items-center justify-center hover:bg-gray-200 ml-2">
+                            <div data-id=${item.id} class="cart-item-increase cursor-pointer text-gray-400 bg-gray-100 rounded h-6 w-6 flex items-center justify-center hover:bg-gray-200 ml-2">
                                 <i class="fas fa-chevron-right"></i>
                             </div>
                             
                         </div>
                         <div class="cart-item-total-cost w-48 font-bold text-gray-400 ">
-                            ${item.price}
+                             $${item.price * item.quantity} 
                         </div>
                         <div class="cart-item-delete w-10 font-bold text-gray-440 cursor-pointer hover:text-gray-400">
                             <i class="fas fa-times"></i>
                         </div>  
+                        
                     </div>
+
+                    
         `
      })
      //crazy . in class had me here all night//
      document.querySelector(".cart-items").innerHTML = itemsHTML;
+
+        createEventListeners()
+ }
+ function createEventListeners (){
+     let decreaseButtons = document.querySelectorAll(".cart-item-decrease"); 
+     let increaseButtons =document.querySelectorAll(".cart-item-increase");
+     decreaseButtons.forEach((button)=>{
+       button.addEventListener("click", function(){
+           decreaseCount(button.dataset.id);
+       })  
+     })
+     increaseButtons.forEach((button)=>{
+         button.addEventListener("click",function(){
+             increaseCout(button.dataset.id)
+         })
+     })
  }
 
 
