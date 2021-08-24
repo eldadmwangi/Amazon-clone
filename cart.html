@@ -11,7 +11,12 @@
 </script>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="firebase.js"></script>
 <script src="header.js"></script>
+<script src="cart.js"></script>
 
     <title>Amazon 2.0</title>
 </head>
@@ -45,7 +50,7 @@
                     <svg class='h-4 w-4' xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                       </svg>
-                      <div class="cart-item-number absolute -top-1 -right-1 h-4 w-4 rounded-full flex justify-center items-center bg-white text-gray-800 text-xs">1</div>
+                      <div class="cart-item-number absolute -top-1 -right-1 h-4 w-4 rounded-full flex justify-center items-center bg-white text-gray-800 text-xs">  </div>
 
                   </div>
                   <svg class='h-4 w-4 text-white ' xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -112,7 +117,7 @@
                     <span class="w-10"></span>
                 </div>
                 <div class="cart-items mt-5 ">
-                    <div class="cart-item flex items-center pb-4 border-b border-gray-300">
+                    <!-- <div class="cart-item flex items-center pb-4 border-b border-gray-300">
                         <div class="cart-item-image w-40 h-24 bg-white-300 p-4 rounded-lg">
                             <img class="w-full h-full object-contain" src="https://www.apple.com/v/macbook-pro-16/b/images/meta/og__csakh451i0eq_large.png" alt=""/>
                         </div>
@@ -139,10 +144,9 @@
                         </div>
                         <div class="cart-item-delete w-10 font-bold text-gray-440 cursor-pointer hover:text-gray-400">
                             <i class="fas fa-times"></i>
-                        </div>
-                        
-                    </div>
-                    <div class="cart-item flex items-center pb-4 border-b border-gray-300">
+                        </div>  
+                    </div> -->
+                    <!-- <div class="cart-item flex items-center pb-4 border-b border-gray-300">
                         <div class="cart-item-image w-40 h-24 bg-white-300 p-4 rounded-lg">
                             <img class="w-full h-full object-contain" src="https://www.treline.co.ke/wp-content/uploads/2021/01/ishMfuW.jpg" alt=""/>
                         </div>
@@ -171,7 +175,7 @@
                             <i class="fas fa-times"></i>
                         </div>
                         
-                    </div>
+                    </div> -->
                     <div class="complete order flex justify-end mt-5">
                         <div class="total-cost mr-7">  
                             <h2 class="text-gray-500">Total cost</h2>
