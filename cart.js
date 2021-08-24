@@ -47,6 +47,10 @@
      })
  }
 
+ function deleteItem (itemid){
+     db.collection("cart-items").doc(itemid).delete()
+ }
+
  function generateCartItems (cartItems) {
      let itemsHTML ="";
       cartItems.forEach((item)=>{
@@ -77,7 +81,7 @@
                         <div class="cart-item-total-cost w-48 font-bold text-gray-400 ">
                              $${item.price * item.quantity} 
                         </div>
-                        <div class="cart-item-delete w-10 font-bold text-gray-440 cursor-pointer hover:text-gray-400">
+                        <div data-id=${item.id} class="cart-item-delete w-10 font-bold text-gray-440 cursor-pointer hover:text-gray-400">
                             <i class="fas fa-times"></i>
                         </div>  
                         
@@ -94,6 +98,8 @@
  function createEventListeners (){
      let decreaseButtons = document.querySelectorAll(".cart-item-decrease"); 
      let increaseButtons =document.querySelectorAll(".cart-item-increase");
+     let deleteButtons = document.querySelectorAll(".cart-item-delete");
+
      decreaseButtons.forEach((button)=>{
        button.addEventListener("click", function(){
            decreaseCount(button.dataset.id);
@@ -102,6 +108,11 @@
      increaseButtons.forEach((button)=>{
          button.addEventListener("click",function(){
              increaseCout(button.dataset.id)
+         })
+     })
+     deleteButtons.forEach((button)=>{
+         button.addEventListener("click", function(){
+             deleteItem(button.dataset.id)
          })
      })
  }
