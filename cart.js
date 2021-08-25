@@ -25,9 +25,11 @@
      let totalCost =0;  
      items.forEach((item)=>{
          totalCost += (item.price * item.quantity);
-         document.querySelector(".total-cost-number").innerText = `
-         $ ${totalCost}
-         `
+         //either use template literals or numeral link above from numeral.js//
+        //  document.querySelector(".total-cost-number").innerText = `
+        //  $${totalCost}
+        //  `
+        document.querySelector(".total-cost-number").innerText = numeral(totalCost).format('$0,0.00')
      })
 
  }
